@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <title>Mulsemedia'2026: 2st International Workshop on Multi-Sensorial Media and Applications</title>
+    <meta name="description" content="ACM Multimedia 2026 Workshop on emerging multi-sensorial media technologies including haptics, olfaction, EEG and cross-modal interaction systems">
+    <meta name="keywords" content="ACM Multimedia 2026, Haptic Interaction, Multi-sensory Systems, Cross-modal Analysis, Generative AI for Media">
+    
+    <!-- Academic Style CSS -->
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --accent-color: #3498DB;
+            --light-bg: #F8F9FA;
+            --overlay-bg: rgba(229, 234, 240, 0.85); /* 半透明覆盖层颜色 */
+        }
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+        }
+    .header {
+    background: url('figs/background.png') center/cover no-repeat;
+    color: white;
+    background-size: 140%;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    min-height: 500px; /* 确保背景图片有足够显示空间 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-container {
+    position: relative;
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
+}
+/* 半透明矩形框 - 比例为1:0.8 */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60%;
+    background: rgba(172, 114, 66, 0.5);
+    border-radius: 12px;
+    z-index: 1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.header-container:hover::before {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.header-container:hover .header-content {
+    transform: scale(1.05);
+}
+/* 鼠标悬停时的放大效果 */
+.header:hover::before {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* 鼠标悬停时同时放大 */
+.header:hover::before {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+.header:hover .header-content {
+    transform: scale(1.05); /* 与矩形框相同的缩放比例 */
+}
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+.header h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    line-height: 1.4;
+}
+.header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-top: 2rem;
+    font-style: italic;
+}
+        .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--light-bg);
+    padding: 1rem;
+    border-bottom: 3px solid var(--accent-color);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+}
+/* 添加伪元素创建间距 */
+.nav-links::before {
+    content: '';
+    width: 120px; /* 调整这个值来控制Logo与Scope之间的距离 */
+    height: 1px;
+    visibility: hidden; /* 隐藏但占用空间 */
+}
+.logo-link {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 25rem; /* Logo距离左侧的距离 */
+}
+.logo {
+    height: 50px;
+    width: auto;
+}
+.nav-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.nav-link:hover {
+    color: #e74c3c;
+}
+/* 响应式调整 */
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .header {
+        min-height: 450px;
+        padding: 5rem 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 2.8rem;
+    }
+    
+    .header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .header p {
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 768px) {
+    .header::before {
+        width: 90%;
+        height: 72%; /* 90% * 0.8 = 72% */
+    }
+    
+    .header {
+        min-height: 400px;
+        padding: 4rem 1rem;
+    }
+    
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    .header {
+        min-height: 350px;
+        padding: 3rem 0.5rem;
+    }
+    
+    .header::before {
+        width: 95%;
+        height: 76%; /* 95% * 0.8 = 76% */
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header h2 {
+        font-size: 1rem;
+    }
+    
+    .header-content {
+        padding: 1rem;
+    }
+}
+        .workshop-details {
+            max-width: 1200px;
+            margin: 6rem auto 2rem; 
+            padding: 0 1rem;
+        }
+        .organizer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .important-dates {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .topics-list {
+            columns: 2;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                height: 40px;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .logo-link {
+                right: calc(100% + 0.5rem);
+            }
+            }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Mulsemedia'2026</h1>
+            <h2>2rd International Workshop on Multi-Sensorial Media and Applications</h2>
+            <p>Co-located with ACM Multimedia 2026 | Rio de Janeiro, Brazil</p>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="#" class="logo-link">
+          <img src="figs/acm-logo.png" alt="Logo" class="logo">
+        </a>
+      
+        <!-- 导航项容器（保持居中） -->
+        <div class="nav-links">
+          <a href="#scope" class="nav-link">Scope</a>
+          <a href="#call_for_paper" class="nav-link">Call for Papers</a>
+          <a href="#submission" class="nav-link">Submission</a>
+          <a href="#agenda" class="nav-link">Agenda</a>
+          <a href="#organizers" class="nav-link">Organizers</a>
+        </div>
+      </nav>
+
+    <main class="workshop-details">
+
+        <section id="scope">
+            <h3>Scope</h3>
+            <p>The past decade has witnessed an unprecedented increase in the intelligent processing of text and audio-visual signals. Although these efforts have made significant advances in 
+                improving user experience, a more immersive multimedia system still requires the integration of emerging multi-sensorial media (e.g., text, audio-visual, haptics, olfaction, human 
+                motion, and other new media types) with cross-modal interactions. These media modalities enhance the diversity of user perceptions and shift the user's role from observer to participant 
+                in multimedia systems. Effectively processing these new media signals and seamlessly incorporating them into state-of-the-art multimedia systems will be critical. This necessitates 
+                advancements across the entire multi-sensorial system, as well as considerations of human factors and ergonomics to support implementation. The 2rd International Workshop on Multi-Sensorial
+                 Media and Applications (Mulsemedia), which aims to attract contributions related to multi-sensorial media and its applications, will be colocated with ACM Multimedia 2026 in Rio de Janeiro, Brazil.
+            </p>
+        </section>
+
+
+
+        <section id="calll_for_paper" class="important-dates">
+            <h3>Call for Papers</h3>
+            <p>This workshop welcomes submissions include but are not limited to: 
+            <ul>
+                <li> Mulsemedia systems, environments and datasets </li>
+                <li> Human factors, ergonomics, and psychophysical modeling for mulsemedia </li>
+                <li> Acquisition, representation, and playback of mulsemedia data </li>
+                <li> Coding, delivery, and reconstruction of mulsemedia streams </li>
+                <li> Analysis, interpretation, and interaction with mulsemedia content; </li>
+                <li> Generative AI models for mulsemedia content creation </li>
+                <li> VR/AR/MR applications with mulsemedia </li>
+                <li> Embodied AI applications with mulsemedia </li>
+                <li> Standardization of mulsemedia representation and processing </li>
+                <li> Other emerging applications of mulsemedia </li>
+            </ul>
+            </p>
+        </section>
+
+
+        <section id="submission">
+            <h3>Submission Instructions</h3>
+                <li>Paper Format —— The page limit is 8 pages (recommended 4–8 pages), excluding up to 2 additional pages for references only. </li>
+                <li>Submission Page —— To be released. </li>
+                <li>Proceeding —— All accepted papers must be presented at the Mulsemedia workshop following the policies of ACM MM 2026. </li>
+            </ul>
+        </section>
+
+        
+        <section class="important-dates">
+            <h3>Key Dates</h3>
+            Submission, notification, and camera-ready eadlines will be announced by ACM Multimedia and published on the workshop website in due course.
+            <!--<ul>
+                <li>Submission Deadline: TBD </li>
+                <li>Author Notification: TBD</li>
+                <li>Camera Ready: Aug 3, 2026</li>
+            </ul>-->
+        </section>
+
+
+        <section id="agenda" class="important-dates">
+            <h3>Agenda</h3>
+                <p>To be released.</p>
+            </ul>
+        </section>
+
+        <br>
+        <br>
+        <section id="organizers">
+            <h3>Workshop Organizers</h3>
+            <div class="organizer-grid">
+                <div class="important-dates ">
+                    <h4>Prof. Tiesong Zhao</h4>
+                    <p>Fuzhou University<br>
+                    Director, Fujian Key Lab for Media Information Processing<br>
+                    <em>Research: Haptic processing, Multi-modal analysis</em></p>
+                </div>
+                <div class="important-dates">
+                    <h4>Prof. Qian Liu</h4>
+                    <p>Dalian University of Technology<br>
+                    Humboldt Fellow | IEEE Haptic Codec Standardization Secretary<br>
+                    <em>Research: Tactile Internet, HCI systems</em></p>
+                </div>
+                <div class="important-dates">
+                    <h4>Prof. Zhisheng Yan</h4>
+                    <p>George Mason University<br>
+                    NSF CAREER Awardee | MEDIA Lab Director<br>
+                    <em>Research: Immersive system security</em></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="agenda">
+            <h3>Contact</h3>
+            <p>For any questions, please contact the Technical Program Chairs: <a href="">pc-mm26@acmmm.org</a></p>
+            
+            </ul>
+        </section>
+
+    </main>
+
+
+</body>
+</html>
