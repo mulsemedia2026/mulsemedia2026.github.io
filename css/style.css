@@ -9,6 +9,7 @@
     --light-bg: #F8F9FA;
     --overlay-bg: rgba(229, 234, 240, 0.85);
     --nav-height: 70px;
+    --content-width: 1300px;
 }
 
 * {
@@ -22,7 +23,7 @@ font-family: 'Segoe UI', 'Roboto', sans-serif;
 line-height: 1.6;
 color: var(--primary-color);
 overflow-x: hidden;
-
+font-size: 20px;
 background: #eef3f8;  /* 👈 统一淡灰蓝背景 */
 }
 
@@ -40,12 +41,10 @@ background: #eef3f8;  /* 👈 统一淡灰蓝背景 */
     background-size: cover;
     background-position: center;
     margin-top: var(--nav-height);
-    width: 100vw;
     max-width: 100%;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
+    max-width: 100%;
+    margin-top: var(--nav-height);
 }
 
 /* 半透明矩形框 */
@@ -55,7 +54,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-width: min(80%, 1300px);
+width: min(92%, var(--content-width));
 height: min(75%, 550px);
 
 /* 🔥 核心：渐变 + 透明 */
@@ -194,9 +193,9 @@ position: relative;
 
 /* ===== 主要内容区域 ===== */
 .workshop-details {
-    max-width: 1200px;
-    width: 90%;
-    margin: 2rem auto;
+    max-width: var(--content-width);
+    width: 92%;
+    margin: 2.5rem auto;
     padding: 0 1rem;
 }
 
@@ -384,6 +383,7 @@ border-bottom: 1px solid var(--accent-color);
 @media (max-width: 768px) {
     :root {
         --nav-height: 60px;
+        --content-width: 1100px;
     }
 
     .nav-container {
@@ -409,7 +409,7 @@ border-bottom: 1px solid var(--accent-color);
     }
 
     .header::before {
-        width: 90%;
+        width: min(92%, var(--content-width));
         height: 70%;
     }
 
@@ -452,6 +452,7 @@ border-bottom: 1px solid var(--accent-color);
     .workshop-details {
         width: 95%;
         padding: 0 0.5rem;
+        max-width: var(--content-width);
     }
 }
 
