@@ -1,0 +1,473 @@
+/* ========================================
+   Mulsemedia 2026 Workshop Website
+   Author: [gcfengxu]
+   ======================================== */
+
+:root {
+    --primary-color: #2C3E50;
+    --accent-color: #3498DB;
+    --light-bg: #F8F9FA;
+    --overlay-bg: rgba(229, 234, 240, 0.85);
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', 'Roboto', sans-serif;
+line-height: 1.6;
+color: var(--primary-color);
+overflow-x: hidden;
+
+background: #eef3f8;  /* 👈 统一淡灰蓝背景 */
+}
+
+/* ===== Header 优化 ===== */
+.header {
+    background: url('../figs/background.png') center/cover no-repeat;
+    color: white;
+    padding: min(6rem, 12vh) min(2rem, 5vw);
+    text-align: center;
+    position: relative;
+    min-height: min(500px, 70vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    margin-top: var(--nav-height);
+    width: 100vw;
+    max-width: 100%;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* 半透明矩形框 */
+.header::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: min(80%, 1300px);
+height: min(75%, 550px);
+
+/* 🔥 核心：渐变 + 透明 */
+background: linear-gradient(
+135deg,
+rgba(44, 62, 80, 0.55),
+rgba(52, 152, 219, 0.35)
+);
+
+
+border-radius: 16px;
+
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+
+z-index: 1;
+pointer-events: none;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: min(90%, 900px);
+    padding: clamp(1rem, 4vw, 2rem);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center center; /* 确保从中心缩放 */
+}
+
+
+/* 内容不缩放，避免文字溢出 */
+.header:hover .header-content {
+    transform: none; /* 取消内容缩放 */
+}
+
+.header h1 {
+font-size: clamp(2.2rem, 8vw, 3.8rem);
+font-weight: 700;
+margin-bottom: 1rem;
+letter-spacing: 0.5px;
+
+text-shadow: 0 3px 10px rgba(0,0,0,0.5);  /* 更柔 */
+}
+
+.header h2 {
+font-size: clamp(1.2rem, 4vw, 1.7rem);
+font-weight: 400;
+margin-bottom: 0.8rem;
+opacity: 0.95;
+white-space: nowrap;
+}
+
+.header p {
+font-size: clamp(1rem, 3vw, 1.2rem);
+opacity: 0.85;
+font-style: normal;   /* ❗去掉 italic（更正式） */
+}
+.aligned {
+display: inline-grid;
+grid-template-columns: auto 1fr;
+column-gap: 0.4rem;
+}
+
+.aligned .label {
+white-space: nowrap;
+font-weight: 600;
+}
+
+.aligned .content {
+display: block;
+}
+/* ===== 导航栏优化 ===== */
+.nav-bar {
+    backdrop-filter: blur(10px);
+    background: rgba(248, 249, 250, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--light-bg);
+    height: var(--nav-height);
+    border-bottom: 3px solid var(--accent-color);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo-link {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+    height: clamp(35px, 5vh, 50px);
+    width: auto;
+    transition: height 0.3s ease;
+}
+.nav-container {
+width: 100%;
+max-width: 1200px;   /* 建议和 main 一致 */
+margin: 0 auto;      /* 关键：整体居中 */
+display: flex;
+justify-content: space-between; /* 左右分布 */
+align-items: center;
+}
+.nav-links {
+display: flex;
+gap: clamp(1.5rem, 4vw, 2.8rem);  /* 原来最大2rem → 提升 */
+align-items: center;
+}
+.nav-link {
+color: var(--primary-color);
+text-decoration: none;
+font-weight: 500;
+font-size: clamp(0.9rem, 2vw, 1rem);
+padding: 0.6rem 0.4rem;  /* 👈 增加上下空间 */
+position: relative;
+}
+
+.nav-link:hover {
+    color: #e74c3c;
+}
+
+/* ===== 主要内容区域 ===== */
+.workshop-details {
+    max-width: 1200px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+margin-bottom: 2.5rem;
+padding: 2rem;
+background: #ffffff;   /* 👈 纯白卡片 */
+border-radius: 14px;  /* 👈 稍微更圆 */
+box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+transition: all 0.25s ease;
+}
+section:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+/* ===== 修复：每个section标题下的分割线 ===== */
+h3 {
+font-size: clamp(1.6rem, 4vw, 2.1rem);
+font-weight: 600;
+margin-bottom: 1.2rem;
+color: var(--primary-color);
+padding-bottom: 0.6rem;
+padding-left: 1.2rem;
+border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+}
+h3 {
+position: relative;
+padding-left: 1.5rem;
+}
+
+p {
+line-height: 1.75;
+color: #34495e;
+text-align: justify;
+}
+#call_for_paper {
+border: 2px solid var(--accent-color);
+background: linear-gradient(135deg, #f8fbff, #eef6ff);
+}
+#call_for_paper h3 {
+color: #1f4e79;
+}
+body {
+background: linear-gradient(to bottom, #ffffff, #f4f7fb);
+}
+h3::before {
+content: '';
+position: absolute;
+left: 0;
+top: 4px;
+height: 75%;
+width: 6px;             /* 👈 更宽 */
+background: linear-gradient(180deg, #3498db, #5dade2); /* 👈 更高级 */
+border-radius: 6px;     /* 👈 更圆润 */
+}  
+/* 使用伪元素创建分割线，这样更灵活 */
+h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0px;  /* 分割线长度 */
+    height: 3px;   /* 分割线粗细 */
+    background: var(--accent-color); /* 使用主题色 */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+.organizer-grid > div {
+background: #ffffff;
+border-radius: 12px;
+padding: 1.4rem;
+border: 1px solid #e6ecf2;
+transition: all 0.25s ease;
+}
+.organizer-grid > div:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.organizer-grid h4 {
+font-size: 1.1rem;
+margin-bottom: 0.4rem;
+color: #1f3a5f;
+}
+.organizer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1.8rem;
+}
+
+.important-dates {
+background: linear-gradient(135deg, #f8f9fa, #eef3f8);
+padding: 1.5rem;
+border-radius: 10px;
+border-left: 4px solid var(--accent-color);
+transition: all 0.25s ease;
+}
+.important-dates:hover {
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.topics-list {
+    columns: 2;
+    column-gap: 2rem;
+    margin: 2rem 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+li {
+margin-bottom: 0.7rem;
+line-height: 1.6;
+}
+a {
+color: var(--accent-color);
+text-decoration: none;
+border-bottom: 1px solid transparent;
+transition: all 0.2s ease;
+}
+.speaker-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 1.8rem;
+margin-top: 1.5rem;
+}
+
+.speaker-card {
+background: #ffffff;
+border-radius: 12px;
+padding: 1.5rem;
+border: 1px solid #e6ecf2;
+transition: all 0.25s ease;
+}
+
+.speaker-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.speaker-card h4 {
+font-size: 1.2rem;
+margin-bottom: 0.3rem;
+color: var(--primary-color);
+}
+
+.affiliation {
+font-size: 0.95rem;
+color: #6b7c93;
+margin-bottom: 0.6rem;
+}
+
+.highlight {
+font-size: 0.9rem;
+color: #2c3e50;
+font-weight: 500;
+margin-bottom: 0.6rem;
+}
+
+.research {
+font-size: 0.9rem;
+margin-bottom: 0.6rem;
+}
+
+.bio {
+font-size: 0.88rem;
+color: #555;
+}
+a:hover {
+border-bottom: 1px solid var(--accent-color);
+}
+/* ===== 响应式优化 ===== */
+@media (max-width: 1024px) {
+    .header {
+        min-height: 400px;
+        padding: 4rem 1.5rem;
+    }
+    
+    .header::before {
+        width: 85%;
+        height: 65%;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 60px;
+    }
+
+    .nav-container {
+        justify-content: flex-start;
+    }
+
+    .nav-links {
+        position: static;
+        transform: none;
+        margin-left: auto;
+        gap: 0.8rem;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+
+    .nav-link {
+        padding: 0.3rem;
+        font-size: 0.85rem;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    .header::before {
+        width: 90%;
+        height: 70%;
+    }
+
+    .topics-list {
+        columns: 1;
+    }
+
+    .organizer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+
+    
+    section:hover h3::after {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        min-height: 300px;
+        padding: 3rem 0.5rem;
+    }
+    
+    .header::before {
+        width: 95%;
+        height: 75%;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+        padding: 0.2rem;
+    }
+
+    .workshop-details {
+        width: 95%;
+        padding: 0 0.5rem;
+    }
+}
+
+/* ===== 工具类 ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+#call_for_paper {
+    scroll-margin-top: calc(var(--nav-height) + 20px);
+}
