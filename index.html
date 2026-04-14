@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
@@ -8,358 +9,14 @@
     <meta name="description" content="ACM Multimedia 2026 Workshop on emerging multi-sensorial media technologies including haptics, olfaction, EEG and cross-modal interaction systems">
     <meta name="keywords" content="ACM Multimedia 2026, Haptic Interaction, Multi-sensory Systems, Cross-modal Analysis, Generative AI for Media">
     
-    <style>
-        :root {
-            --primary-color: #2C3E50;
-            --accent-color: #3498DB;
-            --light-bg: #F8F9FA;
-            --overlay-bg: rgba(229, 234, 240, 0.85);
-            --nav-height: 70px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--primary-color);
-            overflow-x: hidden;
-        }
 
-        /* ===== Header 优化 ===== */
-        .header {
-            background: url('figs/background.png') center/cover no-repeat;
-            color: white;
-            padding: min(6rem, 12vh) min(2rem, 5vw);
-            text-align: center;
-            position: relative;
-            min-height: min(500px, 70vh);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
-            margin-top: var(--nav-height);
-            width: 100vw;
-            max-width: 100%;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-        }
-
-        /* 半透明矩形框 */
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(80%, 1300px);
-            max-width: 90vw;
-            height: min(80%, 600px);
-            max-height: 70vh;
-            background: rgba(56, 63, 161, 0.5);
-            border-radius: 12px;
-            z-index: 1;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none; /* 防止矩形框干扰鼠标事件 */
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            width: min(90%, 900px);
-            padding: clamp(1rem, 4vw, 2rem);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-origin: center center; /* 确保从中心缩放 */
-        }
-
-        
-        /* 内容不缩放，避免文字溢出 */
-        .header:hover .header-content {
-            transform: none; /* 取消内容缩放 */
-        }
-
-        .header h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-
-        .header h2 {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            font-weight: 400;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-            line-height: 1.4;
-        }
-
-        .header p {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            opacity: 0.9;
-            margin-top: 1rem;
-            font-style: italic;
-        }
-
-        /* ===== 导航栏优化 ===== */
-        .nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--light-bg);
-            height: var(--nav-height);
-            border-bottom: 3px solid var(--accent-color);
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 5%;
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo-link {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo {
-            height: clamp(35px, 5vh, 50px);
-            width: auto;
-            transition: height 0.3s ease;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: clamp(1rem, 3vw, 2rem);
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-        }
-
-        .nav-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            transition: color 0.3s ease;
-            padding: 0.5rem;
-        }
-
-        .nav-link:hover {
-            color: #e74c3c;
-        }
-
-        /* ===== 主要内容区域 ===== */
-        .workshop-details {
-            max-width: 1200px;
-            width: 90%;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            margin-bottom: 3rem;
-            scroll-margin-top: calc(var(--nav-height) + 20px);
-        }
-
-        /* ===== 修复：每个section标题下的分割线 ===== */
-        h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-        
-        /* 使用伪元素创建分割线，这样更灵活 */
-        h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0px;  /* 分割线长度 */
-            height: 3px;   /* 分割线粗细 */
-            background: var(--accent-color); /* 使用主题色 */
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-
-        /* 如果还是想要原来的border-bottom方式，也可以这样（二选一）：
-        h3 {
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.75rem;
-        }
-        */
-
-        .organizer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .important-dates {
-            background: var(--light-bg);
-            padding: clamp(1.5rem, 4vw, 2rem);
-            border-radius: 8px;
-            margin: 1rem 0;
-            height: 100%;
-        }
-
-        .topics-list {
-            columns: 2;
-            column-gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        ul, ol {
-            padding-left: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* ===== 响应式优化 ===== */
-        @media (max-width: 1024px) {
-            .header {
-                min-height: 400px;
-                padding: 4rem 1.5rem;
-            }
-            
-            .header::before {
-                width: 85%;
-                height: 65%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --nav-height: 60px;
-            }
-
-            .nav-container {
-                justify-content: flex-start;
-            }
-
-            .nav-links {
-                position: static;
-                transform: none;
-                margin-left: auto;
-                gap: 0.8rem;
-                font-size: 0.9rem;
-                white-space: normal;
-            }
-
-            .nav-link {
-                padding: 0.3rem;
-                font-size: 0.85rem;
-            }
-
-            .logo {
-                height: 35px;
-            }
-
-            .header::before {
-                width: 90%;
-                height: 70%;
-            }
-
-            .topics-list {
-                columns: 1;
-            }
-
-            .organizer-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            /* 移动端分割线调整 */
-            h3::after {
-                width: 50px;
-            }
-            
-            section:hover h3::after {
-                width: 80px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                min-height: 300px;
-                padding: 3rem 0.5rem;
-            }
-            
-            .header::before {
-                width: 95%;
-                height: 75%;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .nav-link {
-                font-size: 0.75rem;
-                padding: 0.2rem;
-            }
-
-            .workshop-details {
-                width: 95%;
-                padding: 0 0.5rem;
-            }
-        }
-
-        /* ===== 工具类 ===== */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-2 {
-            margin-top: 1rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 1rem;
-        }
-
-        #call_for_paper {
-            scroll-margin-top: calc(var(--nav-height) + 20px);
-        }
-    </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <h1>Mulsemedia'2026</h1>
             <h2>2nd International Workshop on Multi-Sensorial Media and Applications</h2>
-            <p>Co-located with ACM Multimedia 2026 | Rio de Janeiro, Brazil</p>
+            <h2>Co-located with ACM Multimedia 2026 | Rio de Janeiro, Brazil</h2>
         </div>
     </header>
 
@@ -373,8 +30,8 @@
                 <a href="#scope" class="nav-link">Scope</a>
                 <a href="#call_for_paper" class="nav-link">Call for Papers</a>
                 <a href="#submission" class="nav-link">Submission</a>
+                <a href="#speakers" class="nav-link">Invited Speakers</a>
                 <a href="#agenda" class="nav-link">Agenda</a>
-                <a href="#organizers" class="nav-link">Organizers</a>
             </div>
         </div>
     </nav>
@@ -389,11 +46,16 @@
                 advancements across the entire multi-sensorial system, as well as considerations of human factors and ergonomics to support implementation. The 2nd International Workshop on Multi-Sensorial
                  Media and Applications (Mulsemedia), which aims to attract contributions related to multi-sensorial media and its applications, will be colocated with ACM Multimedia 2026 in Rio de Janeiro, Brazil.
             </p>
+
+            <p></p>
+
         </section>
 
-        <section id="call_for_paper" class="important-dates">
+        <section id="call_for_paper" >
             <h3>Call for Papers</h3>
-            <p>This workshop welcomes submissions include but are not limited to:</p>
+            <p>The evolution towards truly immersive multimedia systems requires the seamless integration of emerging multi-sensorial modalities— such as haptics, olfaction, motion, and EEG—going beyond conventional audio-visual signals. While significant advances have been made in processing text and audio-visual content, achieving deeper immersion depends on effectively processing these novel signals and enabling intelligent cross-modal interactions across the entire technical pipeline. This integration not only enriches perceptual experience but also transforms users from passive observers into active participants. Simultaneously, human-centered factors including ergonomics, perceptual modeling, and usability must be addressed to ensure practical and effective system implementation. </p>
+            <br>
+            <p>To this end, the 2nd International Workshop on Multi-Sensorial Media and Applications (Mulsemedia’2026) aims to bring together researchers and practitioners working across the ecosystem of mulsemedia. We invite contributions spanning system design and evaluation, coding and delivery, media analysis and interpretation, multimodal interaction, human factors and ergonomics, and novel applications. By fostering interdisciplinary dialogue, Mulsemedia’ 2026 seeks to consolidate existing research, stimulate innovation, and help shape the future of immersive multimedia technology. Topics of interest include, but are not limited to: </p>
             <ul>
                 <li>Mulsemedia systems, environments and datasets</li>
                 <li>Human factors, ergonomics, and psychophysical modeling for mulsemedia</li>
@@ -411,38 +73,94 @@
         <section id="submission">
             <h3>Submission Instructions</h3>
             <ul>
-                <li>Paper Format — The page limit is 8 pages (recommended 4–8 pages), excluding up to 2 additional pages for references only.</li>
-                <li>Submission Page — To be released.</li>
-                <li>Proceeding — All accepted papers must be presented at the Mulsemedia workshop following the policies of ACM MM 2026.</li>
+                <li ><strong>Paper Format </strong>— All submissions to this workshop must strictly adhere to the <a href="https://2026.acmmm.org/site/cfp-guidelines.html "> Regular Paper format</a>. Core requirements include: (1) Use of the <a href="https://www.acm.org/publications/proceedings-template"> ACM Article Template </a>; (2) Double-column format, double-blind review; (3) The page limit is 8 pages (4–8 pages recommended), with up to 2 additional pages permitted for references only.</li>
+                <li ><strong>Submission Page</strong> — To be released.</li>
+                <li ><strong>Proceeding</strong> — All accepted papers must be presented at the Mulsemedia workshop following the policies of ACM MM 2026. ACM Multimedia 2026 is an on-site event only. This means that all papers and contributions must be presented by a physical person on-site; remote presentations will not be hosted or allowed. Papers and contributions not presented on-site will be considered a no-show and removed from the proceedings of the conference. More details will be provided to handle unfortunate situations in which none of the authors would be able to attend the conference physically.</li>
+                <li > <strong>Key Dates</strong> — Submission, notification, and camera-ready deadlines will be announced by ACM Multimedia and published on the workshop website in due course.</li>
             </ul>
         </section>
 
-        <section class="important-dates">
-            <h3>Key Dates</h3>
-            <p>Submission, notification, and camera-ready deadlines will be announced by ACM Multimedia and published on the workshop website in due course.</p>
+        <section id="speakers">
+            <h3>Invited Speakers</h3>
+        
+            <div class="speaker-grid">
+        
+                <!-- Speaker 1 -->
+                <div class="speaker-card">
+                    <h4>Prof. Abdulmotaleb El Saddik</h4>
+                    <p class="affiliation">University of Ottawa, Canada</p>
+        
+                    <p class="highlight">
+                        IEEE Fellow · Fellow of the Royal Society of Canada · ACM Distinguished Scientist
+                    </p>
+        
+                    <p class="research">
+                        <em>Research:</em> Digital Twins, Artificial Intelligence, Internet of Things, AR/VR
+                    </p>
+        
+                    <p class="bio">
+                        Distinguished Professor at the University of Ottawa. He has supervised over 150 researchers and authored more than 650 publications. His work focuses on digital twins for enhancing human well-being through AI-driven multi-sensorial interaction systems.
+                    </p>
+                </div>
+        
+                <!-- Speaker 2 -->
+                <div class="speaker-card">
+                    <h4>Prof. Dangxiao Wang</h4>
+                    <p class="affiliation">Beihang University, China</p>
+        
+                    <p class="highlight">
+                        CCF Distinguished Member · Former Chair, IEEE Technical Committee on Haptics
+                    </p>
+        
+                    <p class="research">
+                        <em>Research:</em> Haptics, Brain-Computer Interaction, Medical Robotics
+                    </p>
+        
+                    <p class="bio">
+                        Professor at Beihang University and Deputy Director of the State Key Laboratory of Virtual Reality Technology and Systems. His research spans machine haptics, neurohaptics, and immersive interaction, with numerous awards and publications in IEEE journals.
+                    </p>
+                </div>
+        
+            </div>
+        </section>
+
+        <section id="program" >
+            <h3>Program</h3>
+            <p>We will continue the Best (Student) Paper Award from the previous edition to encourage submissions of outstanding student papers. </p>
         </section>
 
         <section id="agenda" class="important-dates">
             <h3>Agenda</h3>
-            <p>To be released.</p>
+            <p>This year, our workshop expects to receive 30–50 submissions, of which 15–20 will be accepted, maintaining an acceptance rate between 30% and 50%. We will present a Best Student Paper Award and may also introduce a Best Paper Award. During the workshop, two plenary talks will be held, followed by an award ceremony to honor the recipients. </p>
+            <br>
+            <p>In addition to the authors, the workshop is expected to attract over 100 attendees, with approximately 50 participating in person. The event is scheduled to last half a day. A tentative program is outlined below: </p>    
+            <ul>
+              <li> Opening: 10 minutes </li>
+              <li> Plenary Talk 1: 30 minutes </li>
+              <li> Plenary Talk 2: 30 minutes </li>
+              <li> Best Paper Award Session: 35 minutes </li>
+              <li> Coffee Break: 20 minutes </li>
+              <li> Paper Presentations: up to 10 minutes per paper </li>
+              <li> Closing Ceremony: 5 minutes </li>
+          </ul>
         </section>
 
-        <section id="organizers">
-            <h3>Workshop Organizers</h3>
+        <section id="organizers" >
+            <h3> Organizers </h3>
             <div class="organizer-grid">
-                <div class="important-dates">
+                <div >
                     <h4>Prof. Tiesong Zhao</h4>
                     <p>Fuzhou University<br>
                     Director, Fujian Key Lab for Media Information Processing<br>
                     <em>Research: Haptic processing, Multi-modal analysis</em></p>
                 </div>
-                <div class="important-dates">
+                <div >
                     <h4>Prof. Qian Liu</h4>
                     <p>Dalian University of Technology<br>
                     Humboldt Fellow | IEEE Haptic Codec Standardization Secretary<br>
                     <em>Research: Tactile Internet, HCI systems</em></p>
                 </div>
-                <div class="important-dates">
+                <div >
                     <h4>Prof. Zhisheng Yan</h4>
                     <p>George Mason University<br>
                     NSF CAREER Awardee | MEDIA Lab Director<br>
