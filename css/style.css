@@ -263,28 +263,51 @@ h3::after {
     border-radius: 2px;
     transition: width 0.3s ease;
 }
-.organizer-grid > div {
-background: #ffffff;
-border-radius: 12px;
-padding: 1.4rem;
-border: 1px solid #e6ecf2;
-transition: all 0.25s ease;
-}
-.organizer-grid > div:hover {
-transform: translateY(-4px);
-box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-.organizer-grid h4 {
-font-size: 1.1rem;
-margin-bottom: 0.4rem;
-color: #1f3a5f;
-}
 .organizer-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 1.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
 }
 
+.organizer-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e6ecf2;
+    transition: all 0.25s ease;
+}
+
+.organizer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* 名字 */
+.organizer-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    color: #1f3a5f;
+}
+
+/* 学校 */
+.affiliation {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+/* 职位 */
+.title {
+    font-size: 0.92rem;
+    color: #5a6b7c;
+    margin-bottom: 0.6rem;
+}
+
+/* 研究方向 */
+.research {
+    font-size: 0.92rem;
+    color: #2c3e50;
+    margin-top: 0.6rem;
+}
 .important-dates {
 background: linear-gradient(135deg, #f8f9fa, #eef3f8);
 padding: 1.5rem;
