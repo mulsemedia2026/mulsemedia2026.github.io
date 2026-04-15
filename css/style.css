@@ -478,7 +478,81 @@ border-bottom: 1px solid var(--accent-color);
         max-width: var(--content-width);
     }
 }
+/* ===== Key Dates（顶会风格） ===== */
 
+.key-dates {
+    margin-top: 2.5rem;
+}
+
+/* 标题 */
+.key-dates h4 {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1f3a5f;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+/* 彩色下划线（核心视觉点） */
+.key-dates h4::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 5px;
+    margin: 8px auto 0;
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    border-radius: 2px;
+}
+
+/* 表格整体 */
+.key-dates table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.05);
+}
+
+/* 行 */
+.key-dates tr {
+    transition: background 0.2s ease;
+}
+
+/* hover 效果（高级感） */
+.key-dates tr:hover {
+    background: #f4f8fc;
+}
+
+/* 单元格 */
+.key-dates td {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid #eef2f6;
+}
+
+/* 左列 */
+.key-dates td:first-child {
+    text-align: left;
+    color: #2c3e50;
+    padding-left: 3rem
+}
+
+/* 右列（日期） */
+.key-dates td:last-child {
+    text-align: right;         /* ❗从 right 改为 left */
+    padding-left: 2rem;       /* 👈 人为控制间距 */
+    font-weight: 600;
+    color: var(--accent-color);
+    padding-right: 3rem
+}
+
+/* 去掉最后一行边框 */
+.key-dates tr:last-child td {
+    border-bottom: none;
+}
 /* ===== 工具类 ===== */
 .text-center {
     text-align: center;
