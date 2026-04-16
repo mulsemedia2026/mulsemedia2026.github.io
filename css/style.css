@@ -269,24 +269,57 @@ h3::after {
     gap: 1.8rem;
 }
 
-.organizer-card {
+/* ===== 布局 ===== */
+.org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* ===== 卡片（统一你网站风格） ===== */
+.org-card {
     background: #ffffff;
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: 14px;
+    padding: 1.6rem;
     border: 1px solid #e6ecf2;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
     transition: all 0.25s ease;
 }
 
-.organizer-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.org-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
 }
 
-/* 名字 */
-.organizer-card h4 {
+/* ===== 标题 ===== */
+.org-card h4 {
     font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+/* 小标题（Publication Chair） */
+.sub-title {
+    margin-top: 1.2rem;
+}
+
+/* ===== 列表 ===== */
+.org-card ul {
+    padding-left: 1.2rem;
+}
+
+.org-card li {
     margin-bottom: 0.6rem;
-    color: #1f3a5f;
+    line-height: 1.7;
+    color: #34495e;
+}
+
+/* ===== 名字高亮（统一蓝色体系） ===== */
+.name {
+    font-weight: 600;
+    color: var(--accent-color);  /* 👈 关键：用你的主题蓝 */
 }
 
 /* 学校 */
